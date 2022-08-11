@@ -24,6 +24,7 @@ const returnPrices = (
   return convertToMyanmar(value);
 };
 
+// ? unit calculation for home meter
 const homeUnitCalculation = (input: Input) => {
   switch (true) {
     case input < 31:
@@ -45,8 +46,7 @@ const homeUnitCalculation = (input: Input) => {
   }
 };
 
-console.log(homeUnitCalculation(110));
-
+// ? unit calculation for factory meter
 const factoryUnitCalculation = (input: Input) => {
   switch (true) {
     case input < 501:
@@ -68,8 +68,8 @@ const factoryUnitCalculation = (input: Input) => {
   }
 };
 
-// console.log(factoryUnitCalculation(100001));
-
+// ? for both home and factory
+// * calculate previous month meta units - current month meta units
 const finAndCalculateUsedUnit = (
   type: "Home" | "Factory",
   prevUnit: number,
@@ -84,4 +84,7 @@ const finAndCalculateUsedUnit = (
     : factoryUnitCalculation(units);
 };
 
+// TESTING
+// console.log(homeUnitCalculation(12));
+// console.log(factoryUnitCalculation(123);
 // console.log(finAndCalculateUsedUnit("Home", 2045, 2050345));
